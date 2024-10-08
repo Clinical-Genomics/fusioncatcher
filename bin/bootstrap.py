@@ -188,9 +188,9 @@ def PATHS(exe = None, prefix = None, installdir = None, internet = True):
         FUSIONCATCHER_PREFIX = expand(os.path.dirname(installdir.rstrip(os.sep)))
     else:
         FUSIONCATCHER_PATH = expand(FUSIONCATCHER_PREFIX,'fusioncatcher')
-    
+
     FUSIONCATCHER_BIN = expand(FUSIONCATCHER_PATH,'bin')
-    FUSIONCATCHER_URL = 'http://sourceforge.net/projects/fusioncatcher/files/fusioncatcher_v1.33.zip'
+    FUSIONCATCHER_URL = 'https://github.com/Clinical-Genomics/fusioncatcher/archive/refs/tags/1.34.zip'
     FUSIONCATCHER_VERSION = "1.33"
     FUSIONCATCHER_DATA = expand(FUSIONCATCHER_PATH,'data')
     FUSIONCATCHER_CURRENT = expand(FUSIONCATCHER_DATA,'current')
@@ -561,7 +561,7 @@ def cmd(cmds = [],
                 file(log,"a").writelines(custom)
             else:
                 file(log,"a").write(commandline+"\n")
-                
+
         if verbose:
             print "    # " + ' '.join(c0)
 
@@ -828,7 +828,7 @@ def install_tool(name, url, path, verbose = True, exit = True, env_configure = [
                 ]
         cmd(cmds,
             verbose = verbose,
-            exit = exit, 
+            exit = exit,
             log = log
             )
     if verbose:
@@ -1132,7 +1132,7 @@ if __name__ == '__main__':
     hints = """
 ================================================================================
 NOTE: On a Ubuntu running these before installing FusionCatcher might make the installation go smoother:
-    
+
 sudo apt-get -y install \\
 build-essential\\
 libncurses5-dev \\
@@ -1945,7 +1945,7 @@ python-openpyxl
     ############################################################################
     print "Updating the configuration file of FusionCatcher..."
     print "  * configuration file '%s'" % (FUSIONCATCHER_CONFIGURATION,)
-    
+
     def update_path(SOME_PATH,executable,subdir='src'):
         # update the SOME_PATH with subdir
         some_var = os.path.join(SOME_PATH,subdir)
@@ -1961,7 +1961,7 @@ python-openpyxl
     lzop = update_path(LZOP_PATH,'lzop','src')
     star = update_path(STAR_PATH,'star','source')
     parallel2 = update_path(PARALLEL_PATH,'parallel','src')
-        
+
 #    # update the SRATOOLKIT with 'bin'
 #    sra = os.path.join(SRATOOLKIT_PATH,'bin')
 #    if (SRATOOLKIT_PATH and
@@ -2037,7 +2037,7 @@ python-openpyxl
     data.append("[versions]\n")
     data.append("fusioncatcher = %s\n"%(FUSIONCATCHER_VERSION,))
     data.append("\n")
-    
+
     file(config_file,'w').writelines(data)
 
     ############################################################################
