@@ -137,6 +137,12 @@ if __name__ == '__main__':
         key = "%s_core_" % (options.organism.lower(),)
         organism_dir = [el for el in ftp.nlst() if el.lower().startswith(key) and not el.lower().endswith(".gz")]
         if organism_dir and len(organism_dir) == 1:
+            organism_dir = [el for el in ftp.nlst() if el.lower().startswith(key) and not el.lower().endswith(".gz") and not el.contains("_37")]
+            organism_dir = organism_dir[0]
+            magic = organism_dir.lower().split(key)[1]
+            files['sql'] = files['sql'].replace("---MAGIC---",magic)
+            ftp.cwd(organism_dir)
+        elif organism_dir and len(organism_dir) == 2:
             organism_dir = organism_dir[0]
             magic = organism_dir.lower().split(key)[1]
             files['sql'] = files['sql'].replace("---MAGIC---",magic)
