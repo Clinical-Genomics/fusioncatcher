@@ -45,7 +45,7 @@ WORKDIR /opt
 ## INSTALLATION
 ######################
 
-RUN wget --no-check-certificate http://sf.net/projects/fusioncatcher/files/bootstrap.py -O bootstrap.py \
-    && python bootstrap.py -t -y -i /opt/fusioncatcher/v1.30/
+RUN wget --no-check-certificate https://raw.githubusercontent.com/Clinical-Genomics/fusioncatcher/refs/tags/1.34/bin/bootstrap.py -O bootstrap.py \
+    && python bootstrap.py -t -y -i /opt/fusioncatcher/v1.34/
 
 

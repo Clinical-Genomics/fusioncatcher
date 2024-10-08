@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 """
 A bootstrap script to automatically install FusionCatcher <http://github.com/ndaniel/fusioncatcher>.
 It only needs to have pre-installed:

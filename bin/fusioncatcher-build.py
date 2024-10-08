@@ -140,7 +140,7 @@ if __name__ == '__main__':
                    "version, genome version, and organism name used here."
                   )
 
-    version = "%prog 1.35"
+    version = "%prog 1.34"
 
     parser = MyOptionParser(
                 usage       = usage,
@@ -975,7 +975,7 @@ if __name__ == '__main__':
         job.add('',outdir('genome.fa'),kind='input')
         job.add('>',outdir('genome2.fa'),kind='output')
         job.run()
-        
+
         job.add(_SK_+'seqtk',kind='program')
         job.add('seq',kind='parameter')
         job.add('-n','A',kind='parameter')
@@ -1052,7 +1052,7 @@ if __name__ == '__main__':
 #        job.add('',outdir('genome.fa'),kind='input')
 #        job.add('>',outdir('genome3.fa'),kind='output')
 #        job.run()
-#        
+#
 #        job.link(outdir('genome3.fa'),outdir('genome.fa'),temp_path='yes')
 
 
@@ -1871,7 +1871,7 @@ if __name__ == '__main__':
 
     job.add(_BE_+'bowtie-build',kind='program')
     if bowtie121:
-        job.add('--threads',options.processes,kind='parameter')    
+        job.add('--threads',options.processes,kind='parameter')
     job.add('-f',kind='parameter')
 #    job.add('--ntoa',kind='parameter')
     job.add('--quiet',kind='parameter')
@@ -2028,6 +2028,6 @@ if __name__ == '__main__':
     file(outdir('version.txt'),'w').writelines([line+'\n' for line in d])
     for line in d:
         print line
-    
+
 
     #
