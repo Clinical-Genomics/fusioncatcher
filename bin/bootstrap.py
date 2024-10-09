@@ -190,7 +190,7 @@ def PATHS(exe = None, prefix = None, installdir = None, internet = True):
 
     FUSIONCATCHER_BIN = expand(FUSIONCATCHER_PATH,'bin')
     FUSIONCATCHER_URL = 'https://github.com/Clinical-Genomics/fusioncatcher/archive/refs/tags/1.34.zip'
-    FUSIONCATCHER_VERSION = "1.33"
+    FUSIONCATCHER_VERSION = "1.34"
     FUSIONCATCHER_DATA = expand(FUSIONCATCHER_PATH,'data')
     FUSIONCATCHER_CURRENT = expand(FUSIONCATCHER_DATA,'current')
     FUSIONCATCHER_ORGANISM = 'homo_sapiens'
