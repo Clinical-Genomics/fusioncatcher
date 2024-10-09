@@ -380,7 +380,9 @@ if __name__ == '__main__':
     if p:
         t = parser.get_version()
         t = t.lower().split(".py")
-        if t and len(t) == 2 and t[0].strip() == p.lower():
+        print p.type()
+        print t[0]
+        if t and len(t) == 2 and float(t[0].strip()) == p.lower():
             pass
         else:
             print >>sys.stderr,"................................................................................"
