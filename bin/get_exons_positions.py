@@ -130,8 +130,8 @@ if __name__ == '__main__':
         </Dataset>
     </Query>
     """.replace('%%%organism%%%',ensembl_organism).replace("\n"," ").strip()
-    
-    
+
+
     query2 = """<?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE Query>
     <Query  virtualSchemaName = "default" formatter = "TSV" header = "0" uniqueRows = "0" count = "" datasetConfigVersion = "0.6" >
@@ -228,7 +228,7 @@ if __name__ == '__main__':
             sys.exit(1)
 
         file(temp_exons_filename2,'w').write('')
-        
+
         try:
             v = 0
             for crs in chroms:
@@ -243,9 +243,9 @@ if __name__ == '__main__':
                 'Accept' : 'text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5',
                 'Accept-Language' : 'en-gb,en;q=0.5'
                 }
-            
+
                 req = urllib2.Request(server,mydata2,headers)
-                page = urllib2.urlopen(req, timeout = 30)
+                page = urllib2.urlopen(req, timeout = 150)
 
 
                 fid=open(temp_exons_filename2,'a')
@@ -278,14 +278,14 @@ if __name__ == '__main__':
         except Exception, error:
             print "\nError: Generic exception!",str(error)
             continue
-            
+
         break
 
 
 
 
     # continue as usual
-    
+
 
 
     #print "Keeping only the genes/transcript/exons from the chromosomes :",chromosomes
@@ -349,16 +349,16 @@ if __name__ == '__main__':
 
     header = (header[1],header[8],header[7],header[11],header[12])
     file(genes_header_filename,'w').writelines(header)
-    
+
     # write also the removed genes
     data = [line.rstrip('\r\n').split('\t') for line in file(os.path.join(options.output_directory,'exons_removed.txt'),'r').readlines() if line.rstrip('\r\n')]
     data = set([(line[1],line[8],line[7],line[11],line[12]) for line in data])
     data = sorted(data)
     file(os.path.join(options.output_directory,'genes_removed.txt'),'w').writelines(['\t'.join(line)+'\n' for line in data])
-    
 
-    
-    
+
+
+
     print "End."
-    
+
     #
