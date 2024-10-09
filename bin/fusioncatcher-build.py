@@ -377,9 +377,11 @@ if __name__ == '__main__':
     confs = configuration.manage(configfile)
     # check if version of fusioncatcher.py matches the configuration.cfg file
     p = confs.get("FUSIONCATCHER",None)
+    print p
     if p:
         t = parser.get_version()
         t = t.lower().split(".py")
+        print t
         if t and len(t) == 2 and t[1].strip() == p.lower():
             pass
         else:
