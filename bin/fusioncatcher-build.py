@@ -381,9 +381,9 @@ if __name__ == '__main__':
         t = parser.get_version()
         t = t.lower().split(".py")
         print float(t[0].strip())
-        print len(t)
+        print len(t[0])
         print t
-        if t[0] and len(t[0]) == 2 and float(t[0].strip()) == p.lower():
+        if t[0] and float(t[0].strip()) == p.lower():
             pass
         else:
             print >>sys.stderr,"................................................................................"
