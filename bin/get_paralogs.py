@@ -109,12 +109,12 @@ if __name__ == '__main__':
     temp_paralogs_filename2=os.path.join(options.output_directory,'temp_paralogs2.txt')
     paralogs_filename=os.path.join(options.output_directory,'paralogs.txt')
     paralogs_header_filename=os.path.join(options.output_directory,'paralogs_header.txt')
-        
 
-                    
+
+
     ense = options.organism.lower().split('_')
     ensembl_organism = ense[0][0] + ense[1] + '_gene_ensembl' if len(ense) == 2 else ense[0][0] + ense[1][0] + ense[2] + '_gene_ensembl'
-    org = ense[0][0] + ense[1] if len(ense) == 2 else ense[0][0] + ense[1][0] + ense[2] 
+    org = ense[0][0] + ense[1] if len(ense) == 2 else ense[0][0] + ense[1][0] + ense[2]
 
     CHUNK_SIZE=65536 # 2**20 1 MB
 
@@ -132,7 +132,7 @@ if __name__ == '__main__':
     <!DOCTYPE Query>
     <Query  virtualSchemaName = "default" formatter = "TSV" header = "0" uniqueRows = "0" count = "" datasetConfigVersion = "0.7" >
         <Dataset name = "%%%organism%%%" interface = "default" >
-            <Filter name = "chromosome_name" value = "%%%chromosome%%%"/>        
+            <Filter name = "chromosome_name" value = "%%%chromosome%%%"/>
             <Attribute name = "ensembl_gene_id" />
             <Attribute name = "%%%org%%%_paralog_ensembl_gene" />
         </Dataset>
@@ -161,7 +161,7 @@ if __name__ == '__main__':
     server = "http://%s/biomart/martservice" % (options.server,)
     try:
         req=urllib2.Request(server,mydata1,headers)
-        page=urllib2.urlopen(req, timeout = 30)
+        page=urllib2.urlopen(req, timeout = 300)
 
         fid=open(temp_paralogs_filename1,'w')
         size=0
@@ -213,7 +213,7 @@ if __name__ == '__main__':
             'Accept-Language' : 'en-gb,en;q=0.5'
             }
             req=urllib2.Request(server,mydata2,headers)
-            page=urllib2.urlopen(req, timeout = 30)
+            page=urllib2.urlopen(req, timeout = 300)
 
             fid=open(temp_paralogs_filename2,'a')
             size=0
@@ -253,19 +253,19 @@ if __name__ == '__main__':
     data=sorted(list(set(data)))
 
     file(paralogs_filename,'wt').writelines(data)
-    
+
     if options.organism.lower() == "saccharomyces_cerevisiae":
         x = options.organism.upper().split('_')
         templ = "ENS"+x[0][0]+x[1][0:2]+"G"
         data = [line.rstrip("\r\n").split("\t") for line in file(paralogs_filename,"r").readlines() if line.rstrip("\r\n")]
         data = [[templ+line[0].upper(),templ+line[1].upper()] for line in data]
         file(paralogs_filename,"w").writelines(['\t'.join(line)+'\n' for line in data])
-    
-    
+
+
     file(paralogs_header_filename,'w').writelines([el.split('"')[1]+'\n' for el in query2.split('Attribute name =')[1:]])
     os.remove(temp_paralogs_filename1)
     os.remove(temp_paralogs_filename2)
-    
+
     print "End."
 
 

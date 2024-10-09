@@ -184,7 +184,7 @@ if __name__ == '__main__':
     server = "http://%s/biomart/martservice" % (options.server,)
     try:
         req = urllib2.Request(server,mydata1,headers)
-        page = urllib2.urlopen(req, timeout = 30)
+        page = urllib2.urlopen(req, timeout = 150)
 
 
         fid=open(temp_exons_filename1,'w')
