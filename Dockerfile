@@ -1,8 +1,6 @@
 FROM ubuntu:18.04
 
-MAINTAINER daniel.nicorici@gmail.com
-
-LABEL Description="This image is used to run FusionCatcher" Version="1.30"
+LABEL Description="This image is used to run FusionCatcher" Version="1.34"
 
 
 RUN apt-get -y clean \
