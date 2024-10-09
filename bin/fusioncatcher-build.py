@@ -374,7 +374,9 @@ if __name__ == '__main__':
     configfile = ''
     if config_files:
         configfile = config_files[0] # first one has priority
+        print configfile
     confs = configuration.manage(configfile)
+    print confs
     # check if version of fusioncatcher.py matches the configuration.cfg file
     p = confs.get("FUSIONCATCHER",None)
     print p

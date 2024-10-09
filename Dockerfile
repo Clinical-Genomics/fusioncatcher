@@ -4,6 +4,7 @@ MAINTAINER daniel.nicorici@gmail.com
 
 LABEL Description="This image is used to run FusionCatcher" Version="1.30"
 
+
 RUN apt-get -y clean \
     && apt-get -y update \
     && apt-get -y install \
@@ -41,11 +42,12 @@ RUN apt-get -y clean \
 
 WORKDIR /opt
 
+COPY ./bin ./bin
+
 ######################
 ## INSTALLATION
 ######################
 
-RUN wget --no-check-certificate https://raw.githubusercontent.com/Clinical-Genomics/fusioncatcher/refs/tags/1.34/bin/bootstrap.py -O bootstrap.py \
-    && python bootstrap.py -t -y -i /opt/fusioncatcher/v1.34/
+RUN python ./bin/bootstrap.py -t -y -i /opt/fusioncatcher/v1.34/
 
 
