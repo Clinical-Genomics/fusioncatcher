@@ -383,7 +383,7 @@ if __name__ == '__main__':
         print float(t[0].strip())
         print len(t)
         print t
-        if t and len(t) == 2 and float(t[0].strip()) == p.lower():
+        if t[0] and len(t[0]) == 2 and float(t[0].strip()) == p.lower():
             pass
         else:
             print >>sys.stderr,"................................................................................"
