@@ -380,8 +380,8 @@ if __name__ == '__main__':
     if p:
         t = parser.get_version()
         t = t.lower().split(".py")
-        print p.lower()
-        print float(t[0].strip())
+        print type(p.lower())
+        print type(float(t[0].strip()))
         if t[0] and float(t[0].strip()) == p.lower():
             pass
         else:
